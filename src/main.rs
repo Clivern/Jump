@@ -2,8 +2,10 @@
 // Use of this source code is governed by the MIT
 // license that can be found in the LICENSE file.
 
+mod cmd;
 use clap::Command;
-use inquire::Text;
+use cmd::new::new;
+use cmd::to::to;
 
 fn main() {
     let matches = Command::new("ju")
@@ -27,17 +29,10 @@ fn main() {
         .get_matches();
 
     match matches.subcommand() {
-        Some(("new", _)) => {
-            let name = Text::new("What is the project name?").prompt();
-
-            match name {
-                Ok(name) => {
-                    println!("Hello {}", name)
-                }
-                Err(_) => println!("Oops! An error happened."),
-            }
-        }
-        Some(("to", _)) => {}
+        // new command
+        Some(("new", _)) => new(),
+        // to command
+        Some(("to", _)) => to(),
         _ => unreachable!(),
     }
 }
