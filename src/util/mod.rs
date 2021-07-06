@@ -2,10 +2,4 @@
 // Use of this source code is governed by the MIT
 // license that can be found in the LICENSE file.
 
-mod util;
-
-use util::environ::get_config;
-
-fn main() {
-    println!("Hello, world!");
-}
+pub mod environ;
