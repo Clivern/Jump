@@ -4,15 +4,6 @@
 
 use inquire::Text;
 
-pub fn to() {
-    let name = Text::new("What is the project name?").prompt();
-
-    match name {
-        Ok(name) => {
-            println!("Name = {}", name);
-        }
-        Err(_) => {
-            println!("Oops! An error happened.")
-        }
-    }
+pub fn to(name: &str) {
+    println!("Name = {}", name);
 }

@@ -3,4 +3,5 @@
 // license that can be found in the LICENSE file.
 
 pub mod new;
+pub mod remove;
 pub mod to;

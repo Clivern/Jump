@@ -4,23 +4,14 @@
 
 use inquire::Text;
 
-pub fn new() {
-    let name = Text::new("What is the project name?").prompt();
+pub fn new(name: &str) {
+    println!("Name = {}", name);
 
-    match name {
-        Ok(name) => {
-            println!("Name = {}", name);
+    let path = Text::new("What is the project path?").prompt();
 
-            let path = Text::new("What is the project path?").prompt();
-
-            match path {
-                Ok(path) => {
-                    println!("Path = {}", path)
-                }
-                Err(_) => {
-                    println!("Oops! An error happened.")
-                }
-            }
+    match path {
+        Ok(path) => {
+            println!("Path = {}", path)
         }
         Err(_) => {
             println!("Oops! An error happened.")
