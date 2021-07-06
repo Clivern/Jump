@@ -32,7 +32,7 @@ fn main() {
 
     let matches = Command::new("ju")
         .about("A Command Line Tool for Fast System Navigation in Rust")
-        .version("0.2.0")
+        .version("0.2.3")
         .subcommand_required(true)
         .arg_required_else_help(true)
         .author("Clivern")
