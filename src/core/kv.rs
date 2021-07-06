@@ -49,17 +49,3 @@ impl KvStore {
         Ok(kv_store)
     }
 }
-
-#[test]
-fn test_kv() {
-    match KvStore::open("~/.jump") {
-        Ok(mut kv) => {
-            kv.set(String::from("key"), String::from("value"));
-            kv.flush("~/.jump");
-            print!("{:?}", kv.get("key").unwrap());
-        }
-        Err(_) => {
-            println!("Error");
-        }
-    }
-}
