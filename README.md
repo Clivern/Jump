@@ -1,6 +1,6 @@
 <p align="center">
     <img src="/static/logo.png" width="300" />
-    <h3 align="center">Jump</h3>
+    <h3 align="center">JuMP</h3>
     <p align="center">A Command Line Tool for Fast System Navigation in Rust.</p>
     <p align="center">
         <a href="https://github.com/Clivern/Jump/actions"><img src="https://github.com/Clivern/Jump/actions/workflows/build.yml/badge.svg"></a>
