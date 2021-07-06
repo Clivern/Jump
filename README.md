@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="/static/logo.png" width="200" />
+    <img src="/static/logo.png" width="300" />
     <h3 align="center">Jump</h3>
     <p align="center">A Command Line Tool for Fast System Navigation in Rust.</p>
     <p align="center">
