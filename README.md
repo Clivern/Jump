@@ -10,6 +10,24 @@
 </p>
 
 
+## Usage
+
+Here is how to install and use `ju` command line tool.
+
+```zsh
+$ cargo install ju
+
+# Store a new path
+$ ju new
+> What is the project name? home
+> What is the project path? /home
+
+# Go to a path
+$ ju to
+> What is the project name? home
+```
+
+
 ## Versioning
 
 For transparency into our release cycle and in striving to maintain backward compatibility, Jump is maintained under the [Semantic Versioning guidelines](https://semver.org/) and release process is predictable and business-friendly.
