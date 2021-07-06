@@ -1,15 +1,16 @@
 [package]
 name = "ju"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Clivern <hello@clivern.com>"]
 edition = "2021"
-description = "Command Line Tool for Database Backup and Restore"
+description = "A Command Line Tool for Fast System Navigation in Rust"
 license = "MIT"
-repository = "https://github.com/Clivern/Bazooka"
+repository = "https://github.com/Clivern/Jump"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+inquire = "0.5.3"
 
 [profile.release]
 opt-level = "z"     # Optimize for size.
