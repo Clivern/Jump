@@ -4,7 +4,7 @@
     <p align="center">A Command Line Tool for Fast System Navigation in Rust.</p>
     <p align="center">
         <a href="https://github.com/Clivern/Jump/actions"><img src="https://github.com/Clivern/Jump/actions/workflows/build.yml/badge.svg"></a>
-        <a href="https://github.com/Clivern/Jump/releases"><img src="https://img.shields.io/badge/Version-v0.1.0-green.svg"></a>
+        <a href="https://github.com/Clivern/Jump/releases"><img src="https://img.shields.io/badge/Version-v0.1.2-green.svg"></a>
         <a href="https://github.com/Clivern/Jump/blob/main/LICENSE"><img src="https://img.shields.io/badge/LICENSE-MIT-green.svg"></a>
     </p>
 </p>
