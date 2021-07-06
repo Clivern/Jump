@@ -3,6 +3,7 @@
 // license that can be found in the LICENSE file.
 
 mod cmd;
+mod core;
 use clap::{arg, Command};
 use cmd::new::new;
 use cmd::remove::remove;
