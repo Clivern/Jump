@@ -4,7 +4,7 @@
     <p align="center">A Command Line Tool for Fast System Navigation in Rust.</p>
     <p align="center">
         <a href="https://github.com/Clivern/Jump/actions"><img src="https://github.com/Clivern/Jump/actions/workflows/build.yml/badge.svg"></a>
-        <a href="https://github.com/Clivern/Jump/releases"><img src="https://img.shields.io/badge/Version-v0.1.2-green.svg"></a>
+        <a href="https://github.com/Clivern/Jump/releases"><img src="https://img.shields.io/badge/Version-v0.2.0-green.svg"></a>
         <a href="https://github.com/Clivern/Jump/blob/main/LICENSE"><img src="https://img.shields.io/badge/LICENSE-MIT-green.svg"></a>
     </p>
 </p>
@@ -17,14 +17,26 @@ Here is how to install and use `ju` command line tool.
 ```zsh
 $ cargo install ju
 
-# Store a new path
-$ ju new
-> What is the project name? home
-> What is the project path? /home
+# Store a new path with name root
+$ ju new root
+> What is the project path? /
 
-# Go to a path
-$ ju to
-> What is the project name? home
+# To remove a path
+$ ju remove $name
+```
+
+Then add a function to jump
+
+```zsh
+jut () {
+    cd $(ju to $1)
+}
+``
+
+It can be used like this
+
+```zsh
+jut root
 ```
 
 

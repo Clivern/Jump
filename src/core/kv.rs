@@ -2,47 +2,28 @@
 // Use of this source code is governed by the MIT
 // license that can be found in the LICENSE file.
 
+use serde::{Deserialize, Serialize};
+use serde_with::{serde_as, DisplayFromStr};
 use std::collections::HashMap;
-use std::fs::{File, OpenOptions};
-use std::io::BufRead;
-use std::io::Seek;
-use std::io::{BufReader, BufWriter, Read, Write};
-use std::path::Path;
+use std::fs::File;
+use std::io::prelude::*;
 
+#[serde_as]
+#[derive(Serialize, Deserialize)]
 pub struct KvStore {
+    #[serde_as(as = "HashMap<DisplayFromStr, _>")]
     store: HashMap<String, String>,
-    file: Option<BufWriter<File>>,
 }
 
 impl KvStore {
-    pub fn new(path: &Path) -> Result<KvStore, std::io::Error> {
-        let file = OpenOptions::new()
-            .read(true)
-            .write(true)
-            .create(true)
-            .open(path)?;
-        let reader = BufReader::new(file.try_clone()?);
-        let mut store = HashMap::new();
-
-        for line in reader.lines() {
-            let line = line?;
-            let parts: Vec<&str> = line.splitn(2, '=').collect();
-            if parts.len() == 2 {
-                store.insert(parts[0].to_owned(), parts[1].to_owned());
-            }
+    pub fn new() -> KvStore {
+        KvStore {
+            store: HashMap::new(),
         }
-
-        Ok(KvStore {
-            store,
-            file: Some(BufWriter::new(file)),
-        })
     }
 
     pub fn set(&mut self, key: String, value: String) {
         self.store.insert(key, value);
-        if let Some(file) = &mut self.file {
-            writeln!(file, "{}={}", key, value).expect("Failed to write to file");
-        }
     }
 
     pub fn get(&self, key: &str) -> Option<&String> {
@@ -51,18 +32,34 @@ impl KvStore {
 
     pub fn remove(&mut self, key: &str) {
         self.store.remove(key);
-        if let Some(file) = &mut self.file {
-            let data = self
-                .store
-                .iter()
-                .map(|(k, v)| format!("{}={}", k, v))
-                .collect::<Vec<String>>()
-                .join("\n");
-            file.seek(std::io::SeekFrom::Start(0))
-                .expect("Failed to seek to start of file");
-            file.write_all(data.as_bytes())
-                .expect("Failed to write to file");
-            file.flush().expect("Failed to flush file");
+    }
+
+    pub fn flush(&self, filename: &str) -> std::io::Result<()> {
+        let serialized = serde_json::to_string(&self)?;
+        let mut file = File::create(filename)?;
+        file.write_all(serialized.as_bytes())?;
+        Ok(())
+    }
+
+    pub fn open(filename: &str) -> std::io::Result<KvStore> {
+        let mut file = File::open(filename)?;
+        let mut contents = String::new();
+        file.read_to_string(&mut contents)?;
+        let kv_store = serde_json::from_str(&contents)?;
+        Ok(kv_store)
+    }
+}
+
+#[test]
+fn test_kv() {
+    match KvStore::open("~/.jump") {
+        Ok(mut kv) => {
+            kv.set(String::from("key"), String::from("value"));
+            kv.flush("~/.jump");
+            print!("{:?}", kv.get("key").unwrap());
+        }
+        Err(_) => {
+            println!("Error");
         }
     }
 }

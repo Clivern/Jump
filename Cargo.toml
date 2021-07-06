@@ -1,6 +1,6 @@
 [package]
 name = "ju"
-version = "0.1.2"
+version = "0.2.0"
 authors = ["Clivern <hello@clivern.com>"]
 edition = "2021"
 description = "A Command Line Tool for Fast System Navigation in Rust"
@@ -11,8 +11,11 @@ repository = "https://github.com/Clivern/Jump"
 
 [dependencies]
 clap = "4.1.4"
+home = "0.5.4"
 inquire = "0.5.3"
+serde = "1.0.152"
 serde_json = "1.0.91"
+serde_with = "2.2.0"
 
 [profile.release]
 opt-level = "z"     # Optimize for size.
