@@ -12,7 +12,7 @@ repository = "https://github.com/Clivern/Jump"
 [dependencies]
 clap = "4.2.7"
 home = "0.5.5"
-inquire = "0.6.1"
+inquire = "0.6.2"
 serde = "1.0.162"
 serde_json = "1.0.96"
 serde_with = "3.0.0"
