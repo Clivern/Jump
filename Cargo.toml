@@ -10,7 +10,7 @@ repository = "https://github.com/Clivern/Jump"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-clap = "4.3.11"
+clap = "4.3.14"
 home = "0.5.5"
 inquire = "0.6.2"
 serde = "1.0.171"
